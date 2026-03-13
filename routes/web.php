@@ -88,7 +88,10 @@ Route::get('/home', [PageController::class, 'home']);
 Route::get('/about', [PageController::class, 'about']);
 Route::get('/contact', [PageController::class, 'contact']);
 Route::get('/services', [PageController::class, 'services']);
-Route::get('/blog', [PageController::class, 'articles']);
+Route::get('/blog', [PageController::class, 'blog']);
+Route::get('/blog/{id}', [PageController::class, 'article'])->where('id', '[0-9]+');
+Route::get('/equipe/{membre?}', [PageController::class, 'equipe']);
+
 //tp3
 Route::get('/', fn() => redirect()->route('tasks.index'));
 Route::resource('tasks', TaskController::class);
