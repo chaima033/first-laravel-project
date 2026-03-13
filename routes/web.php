@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/home', function ()
+use App\Http\Controllers\TaskController;
+/* Route::get('/home', function ()
 {
     return view('home');
-});
+});*/
 Route::get('/profile', function ()
 {
     return view('profile', [
@@ -24,9 +25,10 @@ Route::get('/route-produit', function ()
     ];
     return view('produit', ['produits' => $produits]);
 });
-Route::get('/', function () {
+/*
+ Route::get('/', function () {
     return view('home');
-});
+});*/
 Route::get('about', function () {
     return '<h1>a propos de nous</h1>
             <p>nous somme une equipe laravel !</p>';
@@ -82,3 +84,11 @@ Route::get('/equipe/{membre?}', function ($membre = null) {
 
     return "Ce membre n'existe pas";
 });
+Route::get('/home', [PageController::class, 'home']);
+Route::get('/about', [PageController::class, 'about']);
+Route::get('/contact', [PageController::class, 'contact']);
+Route::get('/services', [PageController::class, 'services']);
+Route::get('/blog', [PageController::class, 'articles']);
+//tp3
+Route::get('/', fn() => redirect()->route('tasks.index'));
+Route::resource('tasks', TaskController::class);
