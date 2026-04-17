@@ -1,15 +1,26 @@
 @extends('layouts.app')
 @section('title', 'Accueil')
 @section('content')
- <h1 style="color: #FF2D20;">Bienvenue sur Mon Site</h1>
- <p>Découvrez nos services et contactez-nous !</p>
- <div style="background: #f5f5f5; padding: 30px; margin-top: 30px; border-radius:
-10px;">
- <h2>Pourquoi nous choisir ?</h2>
- <ul>
- <li>Expertise Laravel</li>
- <li>Support 24/7</li>
- <li>Prix compétitifs</li>
- </ul>
- </div>
+	<section class="hero">
+		<h1>Bienvenue sur Mon Site</h1>
+		<p>Decouvrez nos services, notre blog et notre espace de gestion de taches.</p>
+	</section>
+
+	<section class="panel">
+		<h2 class="card-title">Pourquoi nous choisir ?</h2>
+		<div class="grid grid-3">
+			<article class="panel">
+				<h3 class="card-title">Expertise Laravel</h3>
+				<p class="muted">Une base technique solide pour des applications fiables.</p>
+			</article>
+			<article class="panel">
+				<h3 class="card-title">Support 24/7</h3>
+				<p class="muted">Un accompagnement continu pour rester productif.</p>
+			</article>
+			<article class="panel">
+				<h3 class="card-title">Prix competitifs</h3>
+				<p class="muted">Des offres claires et adaptees a votre budget.</p>
+			</article>
+		</div>
+	</section>
 @endsection

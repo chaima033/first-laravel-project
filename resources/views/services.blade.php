@@ -35,14 +35,19 @@
 </html>
 --}}
 @extends('layouts.app')
-@section('title', 'À propos')
+@section('title', 'Services')
 @section('content')
+    <section class="hero">
+        <h1>Nos Services</h1>
+        <p>Des prestations concretes pour accelerer vos projets digitaux.</p>
+    </section>
 
-    <h1>Nos Services</h1>
- @foreach ($services as $service)
- <div class="service">
- <h3>{{ $service['nom'] }}</h3>
- <p><strong>Prix :</strong> {{ $service['prix'] }}</p>
- </div>
- @endforeach
- @endsection
+    <section class="grid grid-3">
+        @foreach ($services as $service)
+            <article class="panel">
+                <h3 class="card-title">{{ $service['nom'] }}</h3>
+                <p class="muted"><strong>Prix :</strong> {{ $service['prix'] }}</p>
+            </article>
+        @endforeach
+    </section>
+@endsection
