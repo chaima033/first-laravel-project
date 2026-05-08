@@ -10,7 +10,8 @@ class TaskController extends Controller
 
     public function index()
     {
-        $tasks = Task::latest()->get();
+        $user = auth()->user();
+        $tasks = $user ? $user->tasks()->latest()->get() : collect();
         return view('tasks.index', compact('tasks'));
     }
 
@@ -31,7 +32,9 @@ class TaskController extends Controller
             'title' => 'required|min:3|max:255',
             'description' => 'nullable|max:1000',
         ]);
-        Task::create($request->only(['title', 'description']));
+        // create task owned by authenticated user
+        $user = $request->user();
+        $user->tasks()->create($request->only(['title', 'description']));
         return redirect()->route('tasks.index')
             ->with('success', 'Tâche créée !');
     }
@@ -49,6 +52,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
+        if ($task->user_id !== auth()->id())
+        {
+            abort(403);
+        }
         return view('tasks.edit', compact('task'));
     }
 
@@ -58,6 +65,11 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $request->validate(['title' => 'required|min:3|max:255']);
+        if ($task->user_id !== auth()->id())
+        {
+            abort(403);
+        }
+
         $task->update([
             'title' => $request->title,
             'description' => $request->description,
@@ -72,6 +84,11 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        if ($task->user_id !== auth()->id())
+        {
+            abort(403);
+        }
+
         $task->delete();
         return redirect()->route('tasks.index')
             ->with('success', 'Tâche supprimée !');
