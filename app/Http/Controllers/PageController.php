@@ -11,6 +11,7 @@ class PageController extends Controller
     {
         return view('home');
     }
+
     // Page À propos
     public function about()
     {
@@ -18,8 +19,10 @@ class PageController extends Controller
             'titre' => 'À propos de nous',
             'description' => 'Nous sommes une équipe passionnée par Laravel !'
         ];
+
         return view('about', $data);
     }
+
     // Page Contact
     public function contact()
     {
@@ -28,8 +31,10 @@ class PageController extends Controller
             'telephone' => '01 23 45 67 89',
             'adresse' => '123 Rue Laravel, Paris'
         ];
+
         return view('contact', ['contacts' => $contacts]);
     }
+
     // Page Services
     public function services()
     {
@@ -38,9 +43,11 @@ class PageController extends Controller
             ['nom' => 'Design UI/UX', 'prix' => '800€'],
             ['nom' => 'SEO', 'prix' => '500€']
         ];
+
         return view('services', compact('services'));
     }
 
+    // Page Produits
     public function produit()
     {
         $produits = [
@@ -52,7 +59,7 @@ class PageController extends Controller
         return view('produit', compact('produits'));
     }
 
-    //articles
+    // Page Blog
     public function blog()
     {
         $articles = [
@@ -81,12 +88,20 @@ class PageController extends Controller
 
         return view('blog', compact('articles'));
     }
+
+    // Page Équipe
     public function equipe($membre = null)
     {
         $membres = ['Mohamed', 'Chaima', 'Amine', 'David', 'Emma'];
-        if ($membre) return "Membre : $membre";
+
+        if ($membre) {
+            return "Membre : $membre";
+        }
+
         return "Toute l'équipe : " . implode(', ', $membres);
     }
+
+    // Détail Article
     public function article($id)
     {
         $contenus = [
@@ -107,7 +122,9 @@ class PageController extends Controller
             ]
         ];
 
-        if (!isset($contenus[$id])) abort(404);
+        if (!isset($contenus[$id])) {
+            abort(404);
+        }
 
         return view('article', ['article' => $contenus[$id]]);
     }
