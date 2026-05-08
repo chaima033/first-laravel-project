@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+const PROFILE_ROUTE = '/profile';
+
 Route::get('/', function () {
     return Auth::check()
         ? redirect()->route('tasks.index')
@@ -39,13 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('tasks', TaskController::class)
         ->except(['show']);
 
-    Route::get('/profile', [ProfileController::class, 'edit'])
+    Route::get(PROFILE_ROUTE, [ProfileController::class, 'edit'])
         ->name('profile.edit');
 
-    Route::patch('/profile', [ProfileController::class, 'update'])
+    Route::patch(PROFILE_ROUTE, [ProfileController::class, 'update'])
         ->name('profile.update');
 
-    Route::delete('/profile', [ProfileController::class, 'destroy'])
+    Route::delete(PROFILE_ROUTE, [ProfileController::class, 'destroy'])
         ->name('profile.destroy');
 });
 
