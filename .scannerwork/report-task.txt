@@ -3,5 +3,5 @@ projectKey=chaima033_first-laravel-project
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.86952
 dashboardUrl=https://sonarcloud.io/dashboard?id=chaima033_first-laravel-project
-ceTaskId=AZ4Jwva6ik2V-rlu6mCQ
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ4Jwva6ik2V-rlu6mCQ
+ceTaskId=AZ4JygQHik2V-rlu6mIc
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ4JygQHik2V-rlu6mIc

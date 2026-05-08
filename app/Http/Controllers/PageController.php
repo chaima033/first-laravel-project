@@ -95,7 +95,12 @@ class PageController extends Controller
         $membres = ['Mohamed', 'Chaima', 'Amine', 'David', 'Emma'];
 
         if ($membre) {
-            return "Membre : $membre";
+
+            if (!in_array($membre, $membres)) {
+                abort(404);
+            }
+
+            return "Membre : " . e($membre);
         }
 
         return "Toute l'équipe : " . implode(', ', $membres);
