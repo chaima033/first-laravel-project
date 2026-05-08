@@ -12,7 +12,7 @@
         @foreach($articles as $article)
             <article class="panel">
                 <h3 class="card-title">
-                    <a href="/blog/{{ $article['id'] }}" class="article-link">{{ $article['titre'] }}</a>
+                    <a href="{{ route('blog.article', $article['id']) }}" class="article-link">{{ $article['titre'] }}</a>
                 </h3>
                 <p class="muted">Auteur : {{ $article['auteur'] }} | {{ $article['date'] }}</p>
                 <hr class="line-sep">

@@ -41,6 +41,17 @@ class PageController extends Controller
         return view('services', compact('services'));
     }
 
+    public function produit()
+    {
+        $produits = [
+            ['nom' => 'Ordinateur Portable', 'prix' => '1200'],
+            ['nom' => 'Ecran 27 pouces', 'prix' => '300'],
+            ['nom' => 'Souris Sans Fil', 'prix' => '45']
+        ];
+
+        return view('produit', compact('produits'));
+    }
+
     //articles
     public function blog()
     {
